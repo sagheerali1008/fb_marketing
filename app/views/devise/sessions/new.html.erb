@@ -1,0 +1,51 @@
+<div class="limiter pt-75">
+  <div class="container-login100" style="background-image: url('/assets/bg-01.jpg');">
+    <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+      <%= form_for(resource, as: resource_name, class: 'login100-form validate-form',url: session_path(resource_name)) do |f| %>
+      <span class="login100-form-title p-b-49">
+        Login
+      </span>
+      <div class="flex-c-m p-b-20">
+        <%= link_to  user_facebook_omniauth_authorize_path, class: 'login100-social-item bg1 facebook-login-btn' do %>
+        <i class="fa fa-facebook"></i><span>Log in with facebook</span>
+        <% end %>
+      </div>
+      <div class="txt1 text-center">
+        <hr>
+        <span class="or-txt">Or</span>
+      </div>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+        <span class="label-input100">Email</span>
+        <%= f.email_field :email, autofocus: true, class: 'input100',placeholder: 'Email', autocomplete: "email" %>
+        <span class="focus-input100 custom-icon"><i class="fa fa-envelope"></i></span>
+      </div>
+
+      <div class="wrap-input100 validate-input" data-validate="Password is required">
+        <span class="label-input100">Password</span>
+        <%= f.password_field :password, autocomplete: "current-password", class: 'input100', placeholder: 'Type your password' %>
+        <span class="focus-input100 custom-icon"><i class="fa fa-lock"></i></span>
+      </div>
+      <% if devise_mapping.rememberable? %>
+        <div class="text-right p-t-8 p-b-31">
+          <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+          <%= link_to "Forgot your password?", new_password_path(resource_name), class: 'underline' %>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="container-login100-form-btn p-b-31">
+        <div class="wrap-login100-form-btn">
+          <div class="login100-form-bgbtn"></div>
+          <%= f.submit "Login" , class: 'login100-form-btn bg-transparent pointer' %>
+        </div>
+      </div>
+      <div class="flex-col-c p-t-8">
+        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+        <span class="txt1 text-center p-b-20">Don't have an account?
+        <%= link_to "Sign up now", new_registration_path(resource_name), method: :get, class: 'txt2 underline' %> </span>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

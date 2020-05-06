@@ -1,0 +1,524 @@
+<!--**********************************
+    Content body start
+***********************************-->
+<%= javascript_include_tag 'admin_layout', 'data-turbolinks-track': 'reload' %>
+<%= javascript_include_tag('admin/moment.min.js') %>
+<%= javascript_include_tag('admin/daterangepicker.min.js') %>
+<div class="content-body">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 col-xl-12">
+        <div class="card">
+          <div class="card-body branio-crt-new-aud-box">
+            <div class="card-title col-md-12">
+              <div class="row">
+                <div class="col-md-2">ARR Dashboard</div>
+                <div class="col-md-2">
+                  <a href="#" class="text-center btn-block brainio-app-guide-btn"><i class="fa fa-comment-o font-size-23"></i>  App Guide</a>
+                </div>
+                <div class="col-md-2 text-center">
+                  <div class="export-btn">
+                    <svg class="ml-3 my-auto" xmlns="http://www.w3.org/2000/svg" width="17" height="22" viewBox="0 0 17 22"><defs><path id="d9y6a" d="M683.9 50.2h-11.7c-.5 0-.8-.4-.8-.8V32.7c0-.5.4-.8.8-.8h8.3v2.5c0 .9.8 1.6 1.7 1.6h2.5v13.4c0 .4-.4.8-.8.8zm-2.5-17.8l2.7 2.7h-1.9c-.5 0-.8-.4-.8-.8zm4 2.9l-4.2-4.2c0-.1-.2-.1-.3-.1h-8.7c-1 0-1.7.7-1.7 1.7v16.7c0 .9.7 1.6 1.7 1.6h11.7c.9 0 1.7-.7 1.7-1.7V35.6c-.1-.1-.1-.2-.2-.3z"></path><path id="d9y6b" d="M681.8 44.4c-.1 0-.4-.2-.7-.4h.3c.6 0 .8.1.8.2s0 .2-.4.2zm-4.3-.5c0-.1.1-.1.1-.2.2-.5.3-.9.4-1.3l.6.6.5.5c-.5.1-1.1.2-1.6.4zm-.3-4.5c0-.9.3-.9.4-.9.3 0 .4 0 .4.8 0 .2-.1.6-.3 1.3-.3-.5-.5-.9-.5-1.2zm-2.9 7.5c-.2 0-.4-.1-.4-.1 0-.3.9-.7 1.7-1.1.1 0 .1-.1.2-.1-.7.8-1.3 1.3-1.5 1.3zm7.1-3.8c-.2 0-.6 0-1.2.1-.4-.3-.8-.6-1-.9-.3-.3-.6-.6-.8-.9.4-1.2.6-1.8.6-2.1 0-1.4-.5-1.7-1.3-1.7-.7.1-1.4.4-1.4 1.8 0 .6.3 1.4 1 2.3-.2.5-.4 1.1-.6 1.7l-.3.9c-.1 0-.2.1-.3.1-.3.2-.6.3-.9.5-1.3.6-2.2 1-2.2 1.9 0 .6.7 1 1.3 1 .8 0 1.9-1 2.8-2.8.9-.4 2-.6 2.9-.8.7.5 1.5 1.1 1.8 1.1 1 0 1.3-.6 1.3-1.1-.1-1.1-1.2-1.1-1.7-1.1z"></path></defs><g><g transform="translate(-670 -30)"><g><use fill="#5586ef" xlink:href="#d9y6a"></use><use fill="#fff" fill-opacity="0" stroke="#5586ef" stroke-miterlimit="50" xlink:href="#d9y6a"></use></g><g><use fill="#5586ef" xlink:href="#d9y6b"></use></g></g></g></svg><span class="ml-3 my-auto">Export PDF</span>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="export-btn" data-toggle="modal" data-target="#basicModal">
+                    <svg class="ml-4 my-auto" xmlns="http://www.w3.org/2000/svg" width="25" height="26" viewBox="0 0 25 26"><defs><path id="awffa" d="M831.9 52.2h-11.7c-.5 0-.8-.4-.8-.8V34.7c0-.5.4-.8.8-.8h8.3v2.5c0 .9.8 1.6 1.7 1.6h2.5v13.4c0 .4-.4.8-.8.8zm-2.5-17.8l2.7 2.7h-1.9c-.5 0-.8-.4-.8-.8zm4 2.9l-4.2-4.2c0-.1-.2-.1-.3-.1h-8.7c-1 0-1.7.7-1.7 1.7v16.7c0 .9.7 1.6 1.7 1.6h11.7c.9 0 1.7-.7 1.7-1.7V37.6c-.1-.1-.1-.2-.2-.3z"></path><path id="awffb" d="M829.8 46.4c-.1 0-.4-.2-.7-.4h.3c.6 0 .8.1.8.2s0 .2-.4.2zm-4.3-.5c0-.1.1-.1.1-.2.2-.5.3-.9.4-1.3l.6.6.5.5c-.5.1-1.1.2-1.6.4zm-.3-4.5c0-.9.3-.9.4-.9.3 0 .4 0 .4.8 0 .2-.1.6-.3 1.3-.3-.5-.5-.9-.5-1.2zm-2.9 7.5c-.2 0-.4-.1-.4-.1 0-.3.9-.7 1.7-1.1.1 0 .1-.1.2-.1-.7.8-1.3 1.3-1.5 1.3zm7.1-3.8c-.2 0-.6 0-1.2.1-.4-.3-.8-.6-1-.9-.3-.3-.6-.6-.8-.9.4-1.2.6-1.8.6-2.1 0-1.4-.5-1.7-1.3-1.7-.7.1-1.4.4-1.4 1.8 0 .6.3 1.4 1 2.3-.2.5-.4 1.1-.6 1.7l-.3.9c-.1 0-.2.1-.3.1-.3.2-.6.3-.9.5-1.3.6-2.2 1-2.2 1.9 0 .6.7 1 1.3 1 .8 0 1.9-1 2.8-2.8.9-.4 2-.6 2.9-.8.7.5 1.5 1.1 1.8 1.1 1 0 1.3-.6 1.3-1.1-.1-1.1-1.2-1.1-1.7-1.1z"></path><path id="awffc" d="M834.5 28a8.5 8.5 0 1 1 0 17 8.5 8.5 0 0 1 0-17z"></path><path id="awffd" d="M834.706 38.61c-1.048 0-1.9-.852-1.9-1.9s.852-1.9 1.9-1.9 1.9.852 1.9 1.9-.852 1.9-1.9 1.9zm5.653-2.545c-.018-.16-.205-.28-.366-.28-.523 0-.986-.307-1.18-.781a1.269 1.269 0 0 1 .318-1.41.316.316 0 0 0 .035-.429 5.637 5.637 0 0 0-.903-.911.317.317 0 0 0-.433.035c-.34.376-.95.515-1.42.319-.491-.207-.8-.704-.77-1.237a.316.316 0 0 0-.28-.333 5.688 5.688 0 0 0-1.281-.003.317.317 0 0 0-.283.326 1.268 1.268 0 0 1-.78 1.215 1.317 1.317 0 0 1-1.41-.32.318.318 0 0 0-.43-.037 5.66 5.66 0 0 0-.922.911c-.105.131-.09.32.034.433.397.36.525.93.319 1.422-.197.468-.683.77-1.24.77a.31.31 0 0 0-.329.28c-.05.428-.05.864-.002 1.295.017.161.21.28.373.28a1.25 1.25 0 0 1 1.172.781c.2.486.072 1.052-.318 1.41a.317.317 0 0 0-.035.428c.265.338.569.644.902.912.13.106.32.09.433-.034.341-.377.951-.517 1.42-.32.492.206.802.703.771 1.237a.316.316 0 0 0 .28.333 5.662 5.662 0 0 0 1.282.003.317.317 0 0 0 .282-.326 1.266 1.266 0 0 1 .78-1.215 1.315 1.315 0 0 1 1.41.321.318.318 0 0 0 .43.036c.341-.267.651-.574.922-.911a.316.316 0 0 0-.034-.433 1.262 1.262 0 0 1-.32-1.422 1.276 1.276 0 0 1 1.166-.772l.07.002a.317.317 0 0 0 .334-.28c.05-.428.051-.864.003-1.295z"></path></defs><g><g transform="translate(-818 -28)"><g><g><use fill="#5586ef" xlink:href="#awffa"></use><use fill="#fff" fill-opacity="0" stroke="#5586ef" stroke-miterlimit="50" xlink:href="#awffa"></use></g><g><use fill="#5586ef" xlink:href="#awffb"></use></g></g><g><use fill="#fff" xlink:href="#awffc"></use></g><g><g><g><use fill="#5586ef" xlink:href="#awffd"></use></g></g></g></g></g></svg>
+                    <span class="ml-3 my-auto">Automated Reporting</span>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div>
+                    <input type="text" class="Braniodate" name="daterangepicker" id="demo">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-9">
+                  <div class="b-description">Madgicx performs top level clustering of campaigns based on Acquisition, Retargeting and Retention audiences. Each Cluster includes a group of customers with a Different "DNA" that should be tracked and analyzed accordingly.</div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="table-responsive ad-dashboard">
+                  <table class="table table-striped table-bordered zero-configuration">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Amount Spent</th>
+                            <th>ROAS (All)</th>
+                            <th>Revenue</th>
+                            <th>CPM</th>
+                            <th>Cost per Website Add to Cart</th>
+                            <th>CTR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="title1">Total</td>
+                            <td>rgwgi</td>
+                            <td>System Architect</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+                            <td>2011/04/25</td>
+                            <td>$320,800</td>
+                        </tr>
+                        <tr>
+                            <td class="title2">Acquisition</td>
+                            <td>Accountant</td>
+                            <td>Tokyo</td>
+                            <td>63</td>
+                            <td>2011/07/25</td>
+                            <td>$170,750</td>
+                            <td>hgwhg</td>
+                        </tr>
+                        <tr>
+                            <td class="title3">Retargeting</td>
+                            <td>Javascript Developer</td>
+                            <td>Singapore</td>
+                            <td>29</td>
+                            <td>2011/06/27</td>
+                            <td>$183,000</td>
+                            <td>fjk</td>
+                        </tr>
+                        <tr>
+                            <td class="title4">Retention</td>
+                            <td>Customer Support</td>
+                            <td>New York</td>
+                            <td>27</td>
+                            <td>2011/01/25</td>
+                            <td>$112,000</td>
+                        </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4">Strategy Status Overview
+                <span class="ml-2"><a href="#" class="guide-icon-bg" title="The Dashboard - The Cockpit for Media Buyers"><i class="fa fa-comment-o"></i></a></span>
+                <span class="mx-2"><a href="#" class="guide-icon-bg" title="Artical"><i class="fa fa-file-o"></i></a></span>
+                <span class="mx-1"><a href="#" class="guide-icon-bg" title="Watch Youtube Video"><i class="fa fa-file-video-o "></i></a></span>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-4">
+                <div>
+                  <canvas id="lineChart" width="100%" height="150"></canvas>
+                </div>
+                <div class="text-center">Acquisition</div>
+              </div>
+              <div class="col-md-4">
+                <div>
+                  <canvas id="lineChartII" width="100%" height="150"></canvas>
+                </div>
+                <div class="text-center">Retargeting</div>
+              </div>
+              <div class="col-md-4">
+                <div>
+                  <canvas id="lineChartIII" width="100%" height="150"></canvas>
+                </div>
+                <div class="text-center">Retention</div>
+                <div class="btn-primary btn new-retention-btn">Create New Retention Adset</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="row pb-2">
+              <div class="col-md-4">Strategy Status Drilldown
+                <span class="ml-2"><a href="#" class="guide-icon-bg" title="What is the ARR Strategy"><i class="fa fa-comment-o"></i></a></span>
+                <!-- <span class="mx-2"><a href="#" class="guide-icon-bg" title="Artical"><i class="fa fa-file-o"></i></a></span> -->
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-md-12 dashboard-tab">
+                <ul class="nav nav-tabs" role="tablist">
+                  <li class="nav-item col-md-4 text-center p-0">
+                    <a class="nav-link active" href="#acquisition" role="tab" data-toggle="tab">Acquisition</a>
+                  </li>
+                  <li class="nav-item col-md-4 text-center p-0">
+                    <a class="nav-link" href="#retargeting" role="tab" data-toggle="tab">Retargeting</a>
+                  </li>
+                  <li class="nav-item col-md-4 text-center p-0">
+                    <a class="nav-link" href="#retention" role="tab" data-toggle="tab">Retention</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- Tab panes -->
+              <div class="col-md-9 mt-3">
+                <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane in active" id="acquisition">
+                    <div>
+                      <canvas id="lineChartIV" width="100%" height="100"></canvas>
+                    </div>
+                  </div>
+                  <div role="tabpanel" class="tab-pane" id="retargeting">
+                    <div>
+                      <canvas id="lineChartV" width="100%" height="100"></canvas>
+                    </div>
+                  </div>
+                  <div role="tabpanel" class="tab-pane" id="retention">
+                    <canvas id="lineChartVI" width="100%" height="100"></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 mx-auto my-auto">
+                <div class="row">
+                  <div class="col-md-8">Revenue</div>
+                  <div class="col-md-4"><i class="fa fa-caret-down"></span></i></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-8">Amount Spent</div>
+                  <div class="col-md-4"><i class="fa fa-caret-down"></span></i></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-8">CTR</div>
+                  <div class="col-md-4"><i class="fa fa-caret-down"></span></i></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-8">CPM</div>
+                  <div class="col-md-4"><i class="fa fa-caret-down"></span></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="row pb-2">
+              <div class="col-md-4">Total Revenue
+                <span class="ml-2"><a href="#" class="guide-icon-bg" title="The Dashboard - The Cockpit for Media Buyers"><i class="fa fa-comment-o"></i></a></span>
+                <!-- <span class="mx-2"><a href="#" class="guide-icon-bg" title="Artical"><i class="fa fa-file-o"></i></a></span> -->
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-md-12">
+                <canvas id="lineChartVII" width="100%" height="100"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- #/ container -->
+<!--**********************************
+    Content body end
+***********************************-->
+<!-- **Script for Calender**** -->
+<script >
+  $('#demo').daterangepicker({
+    "showWeekNumbers": true,
+    "showISOWeekNumbers": true,
+    "timePicker": true,
+    "autoApply": true,
+    ranges: {
+        'Today': [moment(), moment()],
+        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+        'This Month': [moment().startOf('month'), moment().endOf('month')],
+        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+    },
+    "alwaysShowCalendars": true,
+    "startDate": "02/18/2020",
+    "endDate": "02/24/2020",
+    "opens": "center",
+    "buttonClasses": "btn btn-md",
+    "applyButtonClasses": "btn btn-primary",
+    "cancelClass": "btn btn-primary"
+}, function(start, end, label) {
+  console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+});
+</script>
+<!-- **Line chart*** -->
+<script>
+  var ctx = document.getElementById("lineChart");
+  ctx.height = 100;
+  var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
+          datasets: [
+              {
+                  label: "My First dataset",
+                  borderColor: "rgba(144, 104,  190,.9)",
+                  borderWidth: "1",
+                  backgroundColor: "rgba(144, 104,  190,.7)",
+                  data: [22, 44, 67, 43, 76, 45, 12]
+              },
+              {
+                  label: "My Second dataset",
+                  borderColor: "rgba(117, 113, 249, 0.9)",
+                  borderWidth: "1",
+                  backgroundColor: "rgba(117, 113, 249, 0.5)",
+                  pointHighlightStroke: "rgba(117, 113, 249,1)",
+                  data: [16, 32, 18, 26, 42, 33, 44]
+              }
+          ]
+      },
+      options: {
+          responsive: true,
+          tooltips: {
+              mode: 'index',
+              intersect: false
+          },
+          hover: {
+              mode: 'nearest',
+              intersect: true
+          }
+      }
+  });
+</script>
+<!-- **Line chart2*** -->
+<script>
+  var ctx = document.getElementById("lineChartII");
+  ctx.height = 100;
+  var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
+          datasets: [
+              {
+                  label: "My First dataset",
+                  borderColor: "rgba(144, 104,  190,.9)",
+                  borderWidth: "1",
+                  backgroundColor: "rgba(144, 104,  190,.7)",
+                  data: [22, 45, 48, 43, 76, 45, 11]
+              },
+              {
+                  label: "My Second dataset",
+                  borderColor: "rgba(117, 113, 249, 0.9)",
+                  borderWidth: "1",
+                  backgroundColor: "rgba(117, 113, 249, 0.5)",
+                  pointHighlightStroke: "rgba(117, 113, 249,1)",
+                  data: [16, 32, 10, 26, 42, 13, 60]
+              }
+          ]
+      },
+      options: {
+          responsive: true,
+          tooltips: {
+              mode: 'index',
+              intersect: false
+          },
+          hover: {
+              mode: 'nearest',
+              intersect: true
+          }
+      }
+  });
+</script>
+<!-- **Line chart3*** -->
+<script>
+  var ctx = document.getElementById("lineChartIII");
+  ctx.height = 100;
+  var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
+          datasets: [
+              {
+                  label: "My First dataset",
+                  borderColor: "rgba(144, 104,  190,.9)",
+                  borderWidth: "1",
+                  backgroundColor: "rgba(144, 104,  190,.7)",
+                  data: []
+              },
+              {
+                  label: "My Second dataset",
+                  borderColor: "rgba(117, 113, 249, 0.9)",
+                  borderWidth: "1",
+                  backgroundColor: "rgba(117, 113, 249, 0.5)",
+                  pointHighlightStroke: "rgba(117, 113, 249,1)",
+                  data: []
+              }
+          ]
+      },
+      options: {
+          responsive: true,
+          tooltips: {
+              mode: 'index',
+              intersect: false
+          },
+          hover: {
+              mode: 'nearest',
+              intersect: true
+          }
+      }
+  });
+</script>
+<!-- **Strategy Status Drilldown Section chart1*** -->
+<script>
+  var ctx = document.getElementById("lineChartIV");
+  ctx.height = 30;
+  var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
+          datasets: [
+              {
+                  label: "My First dataset",
+                  borderColor: "rgba(144, 104,  190,.9)",
+                  borderWidth: "1",
+                  backgroundColor: "rgba(144, 104,  190,.7)",
+                  data: [44, 45, 46, 43, 55, 45, 45]
+              },
+              {
+                  label: "My Second dataset",
+                  borderColor: "rgba(117, 113, 249, 0.9)",
+                  borderWidth: "1",
+                  backgroundColor: "rgba(117, 113, 249, 0.5)",
+                  pointHighlightStroke: "rgba(117, 113, 249,1)",
+                  data: [16, 32, 10, 26, 42, 13, 44]
+              }
+          ]
+      },
+      options: {
+          responsive: true,
+          tooltips: {
+              mode: 'index',
+              intersect: false
+          },
+          hover: {
+              mode: 'nearest',
+              intersect: true
+          }
+      }
+  });
+</script>
+<!-- **Strategy Status Drilldown Section chart2*** -->
+<script>
+  var ctx = document.getElementById("lineChartV");
+  ctx.height = 30;
+  var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
+          datasets: [
+              {
+                  label: "My First dataset",
+                  borderColor: "rgba(144, 104,  190,.9)",
+                  borderWidth: "1",
+                  backgroundColor: "rgba(144, 104,  190,.7)",
+                  data: [44, 44, 44, 45, 44, 44, 46]
+              },
+              {
+                  label: "My Second dataset",
+                  borderColor: "rgba(117, 113, 249, 0.9)",
+                  borderWidth: "1",
+                  backgroundColor: "rgba(117, 113, 249, 0.5)",
+                  pointHighlightStroke: "rgba(117, 113, 249,1)",
+                  data: [22, 22, 22, 22, 22, 22, 26]
+              }
+          ]
+      },
+      options: {
+          responsive: true,
+          tooltips: {
+              mode: 'index',
+              intersect: false
+          },
+          hover: {
+              mode: 'nearest',
+              intersect: true
+          }
+      }
+  });
+</script>
+<!-- **Strategy Status Drilldown Section chart3*** -->
+<script>
+  var ctx = document.getElementById("lineChartVI");
+  ctx.height = 30;
+  var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
+          datasets: [
+              {
+                  label: "My First dataset",
+                  borderColor: "rgba(144, 104,  190,.9)",
+                  borderWidth: "1",
+                  backgroundColor: "rgba(144, 104,  190,.7)",
+                  data: []
+              },
+              {
+                  label: "My Second dataset",
+                  borderColor: "rgba(117, 113, 249, 0.9)",
+                  borderWidth: "1",
+                  backgroundColor: "rgba(117, 113, 249, 0.5)",
+                  pointHighlightStroke: "rgba(117, 113, 249,1)",
+                  data: []
+              }
+          ]
+      },
+      options: {
+          responsive: true,
+          tooltips: {
+              mode: 'index',
+              intersect: false
+          },
+          hover: {
+              mode: 'nearest',
+              intersect: true
+          }
+      }
+  });
+</script>
+<!-- **Total Revenue Section chart*** -->
+<script>
+  var ctx = document.getElementById("lineChartVII");
+  ctx.height = 30;
+  var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+          labels: ["January", "February", "March", "April", "May", "June", "July"],
+          datasets: [
+              {
+                  label: "My First dataset",
+                  borderColor: "rgba(144, 104,  190,.9)",
+                  borderWidth: "1",
+                  backgroundColor: "rgba(144, 104,  190,.7)",
+                  data: [44, 45, 46, 43, 55, 45, 45]
+              },
+              {
+                  label: "My Second dataset",
+                  borderColor: "rgba(117, 113, 249, 0.9)",
+                  borderWidth: "1",
+                  backgroundColor: "rgba(117, 113, 249, 0.5)",
+                  pointHighlightStroke: "rgba(117, 113, 249,1)",
+                  data: [16, 32, 10, 26, 42, 13, 44]
+              }
+          ]
+      },
+      options: {
+          responsive: true,
+          tooltips: {
+              mode: 'index',
+              intersect: false
+          },
+          hover: {
+              mode: 'nearest',
+              intersect: true
+          }
+      }
+  });
+</script>

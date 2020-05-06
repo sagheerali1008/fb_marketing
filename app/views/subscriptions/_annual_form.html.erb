@@ -1,0 +1,267 @@
+<%= form_for :subscription, url: subscriptions_path, method: "post", local: true do |form| %>
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="estimated-text">Estimated Monthly Plan</div>
+        <div id="output22" class="colss-fb-output text-center"></div>
+        <div>
+          <% @subscription %>
+          <%= form.range_field :pay_value1,:step=>1, :min=>1, :max=>18, value: '1',:id=>"input22",class: "slider"%>
+          <%= form.hidden_field :my_score, id: "my_score22" %>
+          <%= form.hidden_field :subscription_type, value: "Annual Plan"%>
+        </div>
+        <div>
+          <h5 class="monthly-text">Your Monthly Ad Spend: US$ 0</h5>
+        </div>
+        <div class="upto-text">
+          <span class="mr-3"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10"><g><g><path fill="#006df0" d="M1.138 5.052L0 6.19l3.724 3.724L12 1.638 10.862.5 3.724 7.638z"></path></g></g></svg></span>Up to US$ 2,500
+        </div>
+        <div class="upto-text">
+          <span class="mr-3"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10"><g><g><path fill="#006df0" d="M1.138 5.052L0 6.19l3.724 3.724L12 1.638 10.862.5 3.724 7.638z"></path></g></g></svg></span>Package includes 1 ad accounts
+        </div>
+        <div class="upto-text">
+          <span class="mr-3"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10"><g><g><path fill="#006df0" d="M1.138 5.052L0 6.19l3.724 3.724L12 1.638 10.862.5 3.724 7.638z"></path></g></g></svg></span>
+         Extra ad accounts beyond the package
+        </div>
+        <div>
+          <div class="fairpolicy">Upgrade policy<br>If you go above the package limits you will automatically be upgraded to the next package tier.<br>Every extra ad account beyond the package limit will be charged at $49/mo.</div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="brainio-upgrade-plan-box">
+          <div class="plan-block">
+            <span>Plan: US$ Plan: US$ <span id="output6"></span></span>
+          </div>
+          <div class="summary-text">Summary:</div>
+          <div class="summary-div">
+            Annual Payment:US$ <span id="output7"></span>
+          </div>
+          <div class="summary-div">
+            Next Payment Due:<span><%=Date.today.next_year%></span>
+            <%=form.hidden_field :end_date, value:Date.today.next_year%>
+          </div>
+          <div class="summary-div">
+            Total:US$ <span  class="summary-div-inside" id="output20"></span>
+          </div>
+          <div class="form-group">
+            <%#= form.submit "Upgrade", class: 'btn mb-1 btn-flat btn-primary custom-btn text-white ' %>
+          </div>
+          <div style="color: black;">
+            <!-- <%#=form.check_box :agree,required:true %><span> I understand that additional charges may apply when going beyond the package limits.</span> -->
+          </div>
+          <div class="col-md-10 btn-upgrade p-0">
+            <button class="btn my-1 btn-flat label gradient-1 rounded pointer btn-lg upgrade-btn-total  col-md-12" data-toggle="modal" type="button" data-target="#paymentModal-2" id="upgrade-btn-1" disabled = "true" >UPGRADE</button>
+          </div>
+          <div class="row pt-4">
+            <div class="col-md-12">
+              <input type="checkbox" id="agree-checkbox-1"><span class="summary-div ml-3">  I understand that additional charges may apply when going beyond the package limits.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+<%end%>
+<div id="all-modals">
+  <div class="container pt-75" style="height: 100%;">
+    <!-- Modal -->
+    <div class="modal fade" id="paymentModal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: #f0f0f4;">
+            <h5 class="modal-title" id="exampleModalLabel">Billing Details</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div>
+              <p class="biling-light-txt"><span class="numberCircle">1</span> Contact Information</p>
+              <div id="one-2"></div>
+              <div id="two-2"></div>
+              <div id="three-2"></div>
+              <div id="four-2"></div>
+              <div id="five-2"></div>
+              <div id="six-2"></div>
+              <div id="seven-2"></div>
+              <div id="eight-2"></div>
+              <div id="nine-2"></div>
+              <div class="payment-btn">
+                <p class="biling-light-txt" id="details-label-2">Fill up the contact details</p>
+                <button class="mb-1 pop-up-btn" id="user-details-2">Add Contact Details</button>
+              </div>
+            </div>
+            <div>
+              <p class="biling-light-txt"><span class="numberCircle mr-1">2</span>Payment Method</p>
+              <div id="ten"></div>
+              <div id="eleven"></div>
+              <div id="twelve"></div>
+              <div id="thirteen"></div>
+              <div id="fourteen"></div>
+              <div id="fifteen"></div>
+              <div id="sixteen"></div>
+              <div id="seventeen"></div>
+              <div class="payment-btn">
+              <p class="biling-light-txt">No card</p>
+              <button class="mb-1 pop-up-btn" id="card-details2">Add Credit Card</button>
+              </div>
+            </div>
+            <div class="mt-3">
+              <p class="biling-light-txt"><span class="numberCircle mr-1">3</span>Plan Details: <strong>madgicx 2.5k month</strong></p>
+            </div>
+            <div class="row mt-3">
+              <div class="col-md-8">Plan (billed every 1 months): </div>
+              <div class="col-md-4"><strong>US$79</strong></div>
+            </div>
+            <div class="col-md-12 total-block">
+              <div class="row mt-2">
+                <div class="col-md-8">Total:</div>
+                <div class="col-md-4"><strong id="total_amt_id-1"></strong></div>
+              </div>  
+            </div>
+            <div class="fairpolicy mt-0">*Extra ad accounts and any other charges beyond the package will be charged in the next invoice.</div>
+            <div class="row text-center mt-3">
+              <div class="col-sm-12">
+                <button class="btn-flat label rounded pointer btn-sm align-self-center" data-dismiss="modal">Cancel</button>
+                <button class="btn-flat label gradient-1 rounded pointer btn-sm mb-3" id="subscribe-btn-1">Subscribe</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 mt-2">
+                <div class="pay-pal-btn-1"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container pt-75" style="height: 100%;">
+    <!-- Modal -->
+    <div class="modal fade" id="userdetailsModal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: #f0f0f4;">
+            <h5 class="modal-title" id="exampleModalLabel">Add Contact Details</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body modal-btn-paypal">
+            <form>
+              <div class="form-group">
+                <label>Your Name</label>
+                <input type="text" class="form-control" id="your-name-2">
+              </div>
+              <div class="form-group">
+                <label>Company Name</label>
+                <input type="text" class="form-control" id="company-name-2">
+              </div>
+              <div class="form-group">
+                <label>Work email</label>
+                <input type="text" class="form-control" id="work-email-2">
+              </div>
+              <div class="form-group">
+                <label>Address</label>
+                <input type="text" class="form-control" id="address-2">
+              </div>
+              <div class="form-group">
+                <label>City</label>
+                <input type="text" class="form-control" id="city-2">
+              </div>
+              <div class="form-group">
+                <label>Country</label>
+                <input type="text" class="form-control" id="country-2">
+              </div>
+              <div class="form-group">
+                <label>Post / ZIP Code</label>
+                <input type="text" class="form-control" id="post-zip-code-2">
+              </div>
+              <div class="form-group">
+                <label>State/Province/Region</label>
+                <input type="text" class="form-control" id="state-province-region-2">
+              </div>
+              <div class="form-group">
+                <label>Tax ID</label>
+                <input type="text" class="form-control" id="tax-id-2">
+              </div>
+            </form>
+            <div class="row text-center mt-3">
+              <div class="col-sm-12">
+                <button class="btn-flat label rounded pointer btn-sm align-self-center" data-dismiss="modal">Cancel</button>
+                <button class="btn-flat label gradient-1 rounded pointer btn-sm" id="save-details-btn-2">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container pt-75" style="height: 100%;">
+    <div class="modal fade" id="carddetailsModal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: #f0f0f4;">
+            <h5 class="modal-title" id="exampleModalLabel">Add Card Details</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label>Add new card</label>
+                <input type="text" class="form-control" id="add-new-card"  pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="16" placeholder="xxxx xxxx xxxx xxxx">
+              </div>
+              <strong>Card holder's information:</strong>
+              <div class="form-group">
+                <label>Card holder's Name</label>
+                <input type="text" class="form-control" id="card-holder-name">
+              </div>
+              <div class="form-group">
+                <label>Address Line 1</label>
+                <input type="text" class="form-control" id="address-line-one">
+              </div>
+              <div class="form-group">
+                <label>Address Line 2</label>
+                <input type="text" class="form-control" id="Address-Line-2">
+              </div>
+              <div class="form-group">
+                <label>City</label>
+                <input type="text" class="form-control" id="city-two">
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Country</label>
+                    <input type="text" class="form-control" id="country-two">
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>State/Province/Region</label>
+                    <input type="text" class="form-control" id="state-province-region-two">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label>Postal Code</label>
+                    <input type="text" class="form-control" id="postal-code">
+                  </div>
+                </div>
+              </div>
+            </form>
+            <div class="row text-center mt-3">
+              <div class="col-sm-12">
+                <button class="btn-flat label gradient-1 rounded pointer btn-sm align-self-center " data-dismiss="modal">Cancel</button>
+                <button class="btn-flat label gradient-1 rounded pointer btn-sm" id="save-card-btn">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

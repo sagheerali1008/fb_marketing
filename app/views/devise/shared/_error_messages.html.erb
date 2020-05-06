@@ -1,0 +1,21 @@
+<% if resource.errors.any? %>
+  <div id="error_explanation">
+    <!-- <div class="error-message"> -->
+      <% resource.errors.full_messages.each do |message| %>
+        <div class="error-message"><%= message %></div>
+      <% end %>
+    <!-- </div> -->
+  </div>
+<% end %>
+<% flash.each do |f| %>
+<div class="error-message">
+  <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'info') %>
+  <%= f[1] %>
+</div>
+<% end %>
+<%# if notice %>
+  <!-- <p class="alert alert-success"><%#= notice %></p> -->
+<%# end %>
+<%# if alert %>
+  <!-- <p class="alert alert-danger"><%#= alert %></p> -->
+<%# end %>

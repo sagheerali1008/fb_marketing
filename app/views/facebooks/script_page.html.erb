@@ -1,0 +1,27 @@
+<div style="margin-top: 200px;text-align: center;">
+  
+  <div id="facebook-btn">
+    <h2>Start your free 7 day trial now</h2>
+    <p>Try Brainio to Manage, Optimize and Monetize your Online Campaigns.</p>
+    <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v5.0&appId=529823704282871&autoLogAppEvents=1"></script>
+
+    <div class="fb-login-button" data-width="" data-size="large"data-button-type="continue_with" data-auto-logout-link="false"data-use-continue-as="false"></div>
+  </div>
+
+  <div id="business-btn">
+    <div>
+      <h1> Connect Your Business Manager</h1>
+      <p >For Brainio to work you need to confirm that the app should have access to your Facebook account.</p>
+      <%= button_to 'Connect To Facebook', business_manager_path,class:"connect-btn", method: :get %>
+    </div>
+    <div>
+      <p>If you dont have business manager account then click here</p>
+      <%= button_to 'create new business account', create_business_path, method: :get %>
+    </div>
+  </div>
+</div>
+<h3 style="margin-bottom: 5px;">Status</h3>
+<div style="border: solid 2px #ccc;font-size: .75rem;padding: .8rem;" id="status"></div>

@@ -1,0 +1,145 @@
+<!--**********************************
+Content body start
+***********************************-->
+<!-- <div id="creative-upload-div">
+  <div class="content-body">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12 col-sm-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-4">
+                  <button>BACK</button>
+                </div>
+                <div class="col-sm-4">
+                  EDIT
+                </div>
+                <div class="col-sm-4">
+                  <button>CREATE</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 col-sm-12">
+          <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Your selected creative combinations that will be launched as ads:</h5>
+                <div class="row">
+                  <% 4.times.each do |combination|%>
+                    <div class="col-sm-3" style="border: 2px solid red;padding:5px;"> combination
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 col-sm-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <h5>Select ad sets to launch this creative combination </h5>
+                  </div>
+                  <div class="col-sm-3">
+                    <input type="checkbox"  class="form-check-input" value="selected" checked="true">
+                    <label class="form-check-label">Selected</label>
+                  </div>
+                  <div class="col-sm-3">
+                    <input type="checkbox" class="form-check-input" value="selected">
+                    <label class="form-check-label">Not Selected</label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <div class="active-pink-3 active-pink-4 mb-4">
+                    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                  </div>
+                </div> 
+              </div>
+              <form>
+                <div>
+                  <div class="row" style="margin-left: 10px;">
+                    <div class="col-sm-6">
+                      <input type="checkbox" id="check-missing" class="form-check-input">
+                      <label class="form-check-label" >Apply to Ad Sets that are missing this Creative Combination</label>
+                    </div>
+                  </div>
+                  <div class="row mt-3" style="margin-left: 10px;">
+                    <div class="col-sm-6">
+                      <input type="checkbox" id="check-all-campaigns" 
+                      class="form-check-input">
+                      <label class="form-check-label">Launch into all Ad Sets</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-3" id="all-campaigns" style="margin-left: 10px;">
+
+                  <% @all_campaigns_name.each_with_index do |name,camp_index| %>
+                    <div class="col-sm-12 mt-3" style="margin-left: 20px;" >
+                      <input type="checkbox" id="camp_<%= camp_index%>" class="form-check-input camp">
+                      <label class="form-check-label"><%= name %>
+                      </label>
+                      <span id="ad-set-dropdown_<%= camp_index %>" onclick="ad_set_function(this, <%= camp_index %>)">Arrow</span>
+                      <div id="ad_set_<%= camp_index %>" class="ad_sets_div"> 
+                      
+                        <% 4.times.each_with_index do |subcheckboxes,ad_set_index| %>
+                          <div class="row">
+                            <div class="col-sm-12 mt-2" style="margin-left: 20px;">
+                              <input type="checkbox" class="form-check-input">
+                              <label class="form-check-label"><%= subcheckboxes %></label>
+                            </div>
+                          </div>
+                        <% end %>
+                      </div> 
+                    </div>
+                  <% end %>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ -->    <!-- #/ container -->
+<!--   </div>
+</div>
+ --><!--**********************************
+Content body end
+***********************************-->
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+
+<!-- <script>
+  $(".ad_sets_div").hide();
+  $("#check-all-campaigns").change(function () {
+    
+    $("#all-campaigns input:checkbox").prop('checked', $(this).prop("checked"));
+  });
+
+  $(".ad-set-dropdown").click(function(){
+    $(".toggle-ad-sets").toggle();    
+  });
+
+  function ad_set_function(obj, index){
+    
+    $("#ad_set_" +index).toggle();
+
+    $("#camp_" +index ).change(function () {
+      
+      $("#ad_set_"+index+" "+"input:checkbox").prop('checked', $(this).prop("checked"));
+      
+    });
+  }
+</script> -->
+<!-- <style>
+  .toggle-ad-sets{
+    display: none;
+  }
+</style> -->

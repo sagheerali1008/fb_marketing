@@ -1,0 +1,34 @@
+<div class="limiter pt-75">
+  <div class="container-login100" style="background-image: url('/assets/bg-01.jpg');">
+    <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+      <%= form_for(resource, as: resource_name, class: 'login100-form validate-form', url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <span class="login100-form-title p-b-49">
+          Forgot your password?
+        </span>
+      <div class="wrap-input100 validate-input m-b-23" data-validate = "Username is reauired">
+        <span class="label-input100">Email</span>
+        <%= f.email_field :email, autofocus: true, class: 'input100',placeholder: 'Email', autocomplete: "email" %>
+        <span class="focus-input100 custom-icon"><i class="fa fa-user"></i></span>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+      <div class="row p-t-8 p-b-31">
+        <div class="text-right col-md-6">
+          <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+          <%= link_to "Forgot password?", new_password_path(resource_name) %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+      <div class="container-login100-form-btn">
+        <div class="wrap-login100-form-btn">
+          <div class="login100-form-bgbtn"></div>
+          <%= f.submit "Send me reset password instructions" , class: 'login100-form-btn bg-transparent pointer' %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

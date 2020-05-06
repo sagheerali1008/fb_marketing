@@ -1,0 +1,8 @@
+<div class="dropdown">
+  <select name="campaign_id" class="campaign_id">
+    <option value="">Select Campaign...</option>
+    <%Campaign.find_each do |campaign|%>
+      <option value="<%=campaign.id%>" data-budget= "<%=campaign.daily_budget%>"><%=campaign.name%></option>
+    <%end%>
+  </select>
+</div>

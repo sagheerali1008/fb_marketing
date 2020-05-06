@@ -1,0 +1,60 @@
+<div role="presentation" class="jss15 AudienceModal__Overlay">
+  <div class="AudienceModal">
+    <div class="CampaignCreation">
+      <span>New Campaign</span>
+      <div class="CampaignCreation__Body">
+        <div class="CampaignCreation__Body__Name"><span> Campaign Name:</span><input name="campaign_name" class="CampaignCreation__Body__Name__Input" type="text" placeholder="Enter Name" maxlength="128" value="Brainio - Custom Campaign"></div>
+        <div class="CampaignCreation__Body__Type">
+          <label>Select the Campaign type:</label>
+          <div class="CampaignCreation__Body__Type__Select">
+            <div class="CampaignCreation__Body__Type__Select__CBO">
+              <label class="MadgicxRadioButton">
+                <div class="CampaignCreation__Body__Type__Select__Div__Text">CBO:</div>
+                <input type="radio" name="is_cbo" value="true" class="is_cbo_true"><span></span>
+              </label>
+              <div class="CampaignCreation__Body__Type__Select__Div__Text"> Set the Campaing Budget:</div>
+              <input class="CampaignCreation__Body__Type__Select__Input cbo_budget_txt" type="number" value=10><label class="CampaignCreation__Body__Type__Select__Label">AUD</label>
+            </div>
+            <label class="MadgicxRadioButton">
+              <div class="CampaignCreation__Body__Type__Select__Div__Text">Budget is set on ad set level</div>
+              <input type="radio" name="is_cbo" value="false" class="is_cbo_false" checked><span></span>
+            </label>
+          </div>
+        </div>
+        <button type="button" class="create_campaign">
+          <div class="Wrapper">
+            <div>Create Campaign</div>
+            <svg width="8" height="12" viewBox="0 0 8 12" class="NavArrow Right">
+              <defs>
+                <path id="zg45a" d="M25.4 19.6L20.8 15l4.6-4.6L24 9l-6 6 6 6z"></path>
+              </defs>
+              <g>
+                <g transform="translate(-18 -9)">
+                  <use fill="currentColor" xlink:href="#zg45a"></use>
+                </g>
+              </g>
+            </svg>
+          </div>
+        </button>
+      </div>
+      <button type="button" class="AudienceModal__Close">
+        <svg width="9" height="9" viewBox="0 0 9 9">
+          <defs>
+            <path id="1lpza" d="M93 19l7.756 7.756"></path>
+            <path id="1lpzb" d="M93 26.756L100.756 19"></path>
+          </defs>
+          <g>
+            <g transform="translate(-92 -19)">
+              <g>
+                <use fill="#fff" fill-opacity="0" stroke="currentColor" stroke-miterlimit="50" xlink:href="#1lpza"></use>
+              </g>
+              <g>
+                <use fill="#fff" fill-opacity="0" stroke="currentColor" stroke-miterlimit="50" xlink:href="#1lpzb"></use>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>

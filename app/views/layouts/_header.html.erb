@@ -1,0 +1,97 @@
+<style type="text/css">
+  .logo-box{
+    height: 45px;
+    width: 160px;
+  }
+  .logo-box img{
+    height: 100%;
+    max-width: 100%;
+  }
+  .dope-navbar{
+    height: 55px;
+  }
+</style>
+<!-- Preloader -->
+<div id="loader-wrapper">
+  <div id="loader"></div>
+  <div class="loader-section section-left"></div>
+  <div class="loader-section section-right"></div>
+</div>
+
+<!-- Start header section -->
+<header class="header-area" id="header-area">
+  <div class="dope-nav-container breakpoint-off bg-white">
+    <div class="container">
+      <div class="row">
+        <!-- dope Menu -->
+        <nav class="dope-navbar justify-content-between" id="dopeNav">
+
+          <!-- Logo -->
+          <a class="nav-brand" href="/">
+            <div class="logo-box">
+              <img src="/assets/logo.png" alt="">
+            </div>
+          </a>
+
+          <!-- Navbar Toggler -->
+          <div class="dope-navbar-toggler">
+            <span class="navbarToggler">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </div>
+
+          <!-- Menu -->
+          <div class="dope-menu" style="width: 80%;">
+
+            <!-- close btn -->
+            <div class="dopecloseIcon">
+              <div class="cross-wrap">
+                <span class="top"></span>
+                <span class="bottom"></span>
+              </div>
+            </div>
+
+            <!-- Nav Start -->
+            <div class="dopenav" style="width: 100%;">
+              <ul id="nav" class="mr-5 menus" style="width: 60%;text-align: center;">
+                <li class="mx-3">
+                  <a href="#" class="cool-link">About</a>
+                </li>
+                <li class="mx-3">
+                  <a href="#" class="cool-link">Pricing</a>
+                </li>
+                <li class="mx-3">
+                  <a href="#" class="cool-link">Resources</a>
+                </li>
+              </ul>
+              <ul id="nav" style="width:40%;text-align: right;">
+                <% if user_signed_in? %>
+                  Logged in as <strong><%= current_user.email %></strong>
+                  <!-- <%#= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> | -->
+                  <li class="mr-3">
+                    <%= link_to destroy_user_session_path, method: :delete, class: "animated-btn primary-btn custom-btn text-white" do %>
+                    <span>Logout</span>
+                    <% end %>
+                  </li>     
+                <% else %>
+                  <li class="mr-3">
+                    <%= link_to new_user_session_path, method: :get, class: "animated-btn primary-btn custom-btn text-white" do %>
+                    <span>Login </span>
+                    <% end %>
+                  </li>
+                <% end %>
+                <li>
+                  <a href="#" class="primary-btn custom-btn text-white animated-btn"><span>Free Trial </span></a>
+                </li>
+              </ul>
+            </div>
+            <!-- Nav End -->
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+    <!-- Start header section -->

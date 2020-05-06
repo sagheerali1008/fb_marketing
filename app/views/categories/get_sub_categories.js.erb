@@ -1,0 +1,12 @@
+$('#audience_sub_category_id').attr('disabled', 'disabled');
+$("#audience_sub_category_id").empty();
+
+<% if @subcategories.present? %>
+ $("#audience_sub_category_id").removeAttr('disabled');
+    <% @subcategories.each do |sub| %>
+   $("#audience_sub_category_id").append('<option value=<%= sub.id %>><%= sub.name %></option>');
+ <% end %> 
+<% else %> 
+
+	$("#audience_sub_category_id").append('<option value=<%= 1 %>>Choose a subcategory</option>');
+<% end %> 

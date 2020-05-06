@@ -1,0 +1,392 @@
+  <!--**********************************
+  Sidebar start
+  ***********************************-->
+<div class="nk-sidebar">
+  <div class="btn-group dropright brainio-side-main">
+    <button type="button" class="btn brainio-side-box">
+      <div class="brainio-profile-box">
+        <img src="/assets/admin/1.png">
+      </div>
+        Ads Manager
+        <h4>Admin</h4>
+    </button>
+    <button type="button" class="btn dropdown-toggle dropdown-toggle-split bg-transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="sr-only">Toggle Dropright</span>
+    </button>
+    <div class="dropdown-menu brainio-profile-side-menu" style="top:133px !important;">
+      <ul>
+        <li>
+          <div class="form-group has-search bg-grey">
+            <span class="fa fa-search form-control-feedback"></span>
+            <input type="text" class="form-control h-auto min-height-25" placeholder="Search">
+          </div>
+        </li>
+        <li class="d-flex p-2 border-bottom brainio-accounts">
+          <div class="bra-add-acount-profile">
+            <img src="/assets/admin/1.png">
+          </div>
+          <div>
+            <span class="vertical-align-middle text-black">Add Account</span>
+          </div>
+        </li>
+        <li class="d-flex p-2 border-bottom brainio-accounts">
+          <div class="bra-add-acount-profile">
+            <img src="/assets/admin/1.png">
+          </div>
+          <div>
+            <span class="vertical-align-middle text-black">Add Account</span>
+          </div>
+        </li>
+        <li class="d-flex p-2 border-bottom brainio-accounts">
+          <div class="bra-add-acount-profile">
+            <img src="/assets/admin/1.png">
+          </div>
+          <div>
+            <span class="vertical-align-middle text-black">Add Account</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="nk-nav-scroll">
+    <ul class="metismenu" id="menu">
+      <li>
+        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+          <i class="fa fa-dashboard"></i><span class="nav-text">Dashboard</span>
+        </a>
+        <ul aria-expanded="false">
+          <li><%= link_to "Dashboard", reports_path, method: "get" %></li>
+          <li><%#= link_to "Reports", reports_path, method: "get" %>
+            <a href="javascript:void()" data-toggle="modal" data-target="#basicModal">Reports</a>
+          </li>
+        </ul>
+      </li>
+      <% unless is_admin?(current_user) %>
+        <li class="mega-menu mega-menu-sm">
+          <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+            <i class="fa fa-globe"></i><span class="nav-text">Launcher</span>
+          </a>
+          <ul aria-expanded="false">
+            <li><%= link_to "Create Ad Set", reports_audiences_path, method: "get" %></li>
+            <li><%= link_to "Creative Clusters", creative_clusters_path, method: "get" %></li>
+            <li></li>
+            <li><%= link_to "Ad Creatives", create_ad_set_path, method: "get" %></li>
+          </ul>
+        </li>
+        <li>
+          <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+            <i class="fa fa-picture-o"></i><span class="nav-text">Creative Studio</span>
+          </a>
+          <ul aria-expanded="false">
+            <li><a href="JavaScript:Void(0);">Creative Insights</a></li>
+          </ul>
+        </li>
+        <li>
+          <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+            <i class="fa fa-sliders"></i> <span class="nav-text">Automation</span>
+          </a>
+          <ul aria-expanded="false">
+            <li><%= link_to "Automation Tactic", rules_path, method: "get" %></li>
+            <li><a href="JavaScript:Void(0);">Bid Testing</a></li>
+          </ul>
+        </li>
+        <li>
+          <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+            <i class="fa fa-bullhorn"></i><span class="nav-text">Campaigns</span>
+          </a>
+          <ul aria-expanded="false">
+            <li><%= link_to "Campaigns Overview", campaigns_path %></li>
+            <li><a href="JavaScript:Void(0);">Ad Set Storyline</a></li>
+          </ul>
+        </li>
+      <% end %>
+      <% if is_admin?(current_user) %>
+        <li>
+          <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+            <i class="fa fa-user-o"></i><span class="nav-text">Users</span>
+          </a>
+          <ul aria-expanded="false">
+            <li><%= link_to "all users", admin_users_path, method: "get" %></li>
+          </ul>
+        </li>
+        <li>
+          <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+            <i class="fa fa-user-o"></i><span class="nav-text">Audiences</span>
+          </a>
+          <ul aria-expanded="false">
+            <li><%= link_to "Audiences", audiences_path, method: "get" %></li>
+          </ul>
+          <ul aria-expanded="false">
+            <li><%= link_to "Categories", categories_path, method: "get" %></li>
+          </ul>
+          <ul aria-expanded="false">
+            <li><%= link_to "Sub-categories", sub_categories_path, method: "get" %></li>
+          </ul>
+        </li>
+      <% end %>
+      <% if  current_user.subscriptions.present? %>
+      <% if current_user.subscriptions.last.agree? %>
+      <% elsif  Date.today > current_user.subscriptions.last.end_date.to_date
+      %>
+      <div class="form-group">
+        <%= link_to "Upgrade",new_subscription_path , class: 'btn mb-1 btn-flat btn-primary custom-btn text-white ' %>
+      </div>
+      <%end%>
+      <%else%>
+      <div class="form-group">
+      <%= link_to "Upgrade",new_subscription_path , class: 'btn mb-1 btn-flat btn-primary custom-btn text-white ' %>
+      </div>
+      <%end%>
+      <div class="mt-4 p-relative">
+      <div class="sidebar-bottom-icon">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-4 text-center">
+              <%= link_to destroy_user_session_path, method: :delete, class: 'p-0 brainio-logout' do %>
+                <i class="fa fa-power-off"></i>
+              <% end %>
+            </div>
+            <div class="col-md-4 text-center">
+              <i class="fa fa-cog"></i>
+            </div>
+            <div class="col-md-4 text-center">
+              <i class="fa fa-ellipsis-v"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </ul>
+    
+  </div>
+</div>
+<!--**********************************
+Sidebar end
+***********************************
+<!-- Modal -->
+<div class="modal fade" id="basicModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header bg-light-grey p-3">
+        <div class="col-md-12 p-0">
+          <div class="row">
+            <div class="col-md-5">
+              <div>
+                <span class="vertical-align-sub text-blue h4"><span class="mr-2"><i class="fa fa-file-pdf-o font-size-23"></i></span> Automated Reporting</span>
+              </div>
+            </div>
+            <div class="col-md-7">
+             <span class="vertical-align-sub text-blue"><span class="mr-2"><i class="fa fa-comment-o font-size-23"></i></span> White Labelling Madgicx Reports</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body p-0 pb-2">
+        <ul class="nav nav-pills mb-3">
+          <li class="nav-item col-md-6 p-0"><a href="#navpills-1" class="nav-link active text-blue brainio-report-tab" data-toggle="tab" aria-expanded="false"><i class="fa fa-calendar mr-3 font-size-23" aria-hidden="true"></i> <span class="vertical-align-bottom"><strong>Edit Reports Schedule</strong></span></a>
+          </li>
+          <li class="nav-item col-md-6 p-0"><a href="#navpills-2" class="nav-link text-blue brainio-report-tab" data-toggle="tab" aria-expanded="false"><i class="fa fa-pencil-square-o mr-3 font-size-23" aria-hidden="true"></i> <span class="vertical-align-bottom"><strong>Edit PDF View</strong></span></a>
+          </li>
+        </ul>
+        <div class="tab-content br-n pn p-3">
+            <div id="navpills-1" class="tab-pane active">
+              <div class="row align-items-center">
+                <div class="col-sm-12 col-md-12 col-xl-12">
+                  <p class="small text-black">You can automate agency reporting which generates and emails reports directly to you or your clients.</p>
+                  <h5>1. Reporting Frequency</h5>
+                  <div class="row bg-light-grey">
+                    <ul class="py-3 px-4">
+                      <li>
+                        <label>
+                          <input type="checkbox" id="check1" class="mr-2" checked=""> <span class="text-black">Daily</span>
+                        </label>
+                      </li>
+                      <li>
+                        <label>
+                          <input type="checkbox" id="check1" class="mr-2" checked=""> <span class="text-black">Weekly</span>
+                        </label>
+                      </li>
+                      <li>
+                        <label>
+                          <input type="checkbox" id="check1" class="mr-2" checked=""> <span class="text-black">Monthly</span>
+                        </label>
+                      </li>
+                    </ul>
+                    <div class="col-md-12">
+                      <div class="form-group d-flex">
+                        <label class="col-form-label col-form-label-md text-black px-2">Schedule time</label>
+                        <div class="px-2">
+                          <input type="time" value="19:00" class="form-control form-control-sm" style="height: auto;min-height: auto;">
+                        </div>
+                        <div class="px-2">
+                          <span class="small text-black vertical-align-sub">12:30 am Your Ad Account time settings.</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group col-md-12">
+                      <input type="time" required="" value="19:00" class="form-control">
+                    </div>
+                  </div>
+                  <h5 class="py-3">1. Recipients: <i class="fa fa-info-circle" aria-hidden="true" title="Multiple email addresses shall be separated by separated by ";" like: example@brainio.com></i></h5>
+                  <div class="row bg-light-grey pt-3">
+                    <form class="col-md-12">
+                      <div class="form-group row">
+                        <label class="col-sm-1 col-form-label col-form-label-sm text-black">Email</label>
+                        <div class="col-sm-10">
+                            <input type="email" class="form-control form-control-sm" placeholder="" style="height: auto;min-height: auto;">
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label class="col-sm-1 col-form-label text-black">CC:</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" placeholder="" style="height: auto;min-height: auto;">
+                        </div>
+                      </div>
+                  </form>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-md-3">
+                    <button type="button" class="btn btn-sm bran-report-btn px-3" >Send a test mail</button>
+                  </div>
+                  <div class="col-sm-9 text-right">
+                    <button type="button" class="btn btn-sm bran-report-btn px-3" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-sm px-3 btn-primary">Schedule</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="navpills-2" class="tab-pane">
+              <div class="row align-items-center">
+                <div class="col-sm-12 col-md-12 col-xl-12">
+                  <p class="small text-black">You can automate agency reporting which generates and emails reports directly to you or your clients.</p>
+                  <h5>1.General Metrics <i class="fa fa-info-circle" aria-hidden="true"></i></h5>
+                  <div class="row bg-light-grey pt-3">
+                    <div class="form-group col-md-4">
+                      <select id="inputState" class="form-control"  style="height: auto;min-height: auto;">
+                        <option selected="selected">Choose...</option>
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <select id="inputState" class="form-control"  style="height: auto;min-height: auto;">
+                        <option selected="selected">Choose...</option>
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <select id="inputState" class="form-control"  style="height: auto;min-height: auto;">
+                        <option selected="selected">Choose...</option>
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                      </select>
+                    </div>
+                  </div>
+                  <h5>2.Graph Metrics <i class="fa fa-info-circle" aria-hidden="true"></i></h5>
+                  <div class="row bg-light-grey pt-3">
+                    <div class="form-group col-md-4">
+                      <select id="inputState" class="form-control"  style="height: auto;min-height: auto;">
+                        <option selected="selected">Choose...</option>
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <select id="inputState" class="form-control"  style="height: auto;min-height: auto;">
+                        <option selected="selected">Choose...</option>
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                      </select>
+                    </div>
+                  </div>
+                  <h5>3.Table Metrics <i class="fa fa-info-circle" aria-hidden="true"></i></h5>
+                  <div class="bg-light-grey">
+                    <div class="row pt-3">
+                      <div class="form-group col-md-4">
+                        <select id="inputState" class="form-control"  style="height: auto;min-height: auto;">
+                          <option selected="selected">Choose...</option>
+                          <option>Option 1</option>
+                          <option>Option 2</option>
+                          <option>Option 3</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-4">
+                        <select id="inputState" class="form-control"  style="height: auto;min-height: auto;">
+                          <option selected="selected">Choose...</option>
+                          <option>Option 1</option>
+                          <option>Option 2</option>
+                          <option>Option 3</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-4">
+                        <select id="inputState" class="form-control"  style="height: auto;min-height: auto;">
+                          <option selected="selected">Choose...</option>
+                          <option>Option 1</option>
+                          <option>Option 2</option>
+                          <option>Option 3</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="row pt-3">
+                      <div class="form-group col-md-4">
+                        <select id="inputState" class="form-control"  style="height: auto;min-height: auto;">
+                          <option selected="selected">Choose...</option>
+                          <option>Option 1</option>
+                          <option>Option 2</option>
+                          <option>Option 3</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-4">
+                        <select id="inputState" class="form-control"  style="height: auto;min-height: auto;">
+                          <option selected="selected">Choose...</option>
+                          <option>Option 1</option>
+                          <option>Option 2</option>
+                          <option>Option 3</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-4">
+                        <select id="inputState" class="form-control"  style="height: auto;min-height: auto;">
+                          <option selected="selected">Choose...</option>
+                          <option>Option 1</option>
+                          <option>Option 2</option>
+                          <option>Option 3</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-sm-12 text-right">
+                    <button type="button" class="btn btn-sm bran-report-btn px-3" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-sm px-3 btn-primary">Schedule</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="navpills-3" class="tab-pane">
+                <div class="row align-items-center">
+                    <div class="col-sm-6 col-md-4 col-xl-2">
+                        <img src="images/big/card-1.png" alt="" class="img-fluid thumbnail m-r-15">
+                    </div>
+                    <div class="col-sm-6 col-md-8 col-xl-10">
+                        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica.</p>
+                        <p>Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

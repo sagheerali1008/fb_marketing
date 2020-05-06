@@ -1,0 +1,79 @@
+<!--**********************************
+Content body start
+***********************************-->
+<div class="content-body">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 col-sm-12">
+        <div class="card">
+            <div class="card-body">
+              <h4>Automation Tactic View</h4>
+              <div style="margin-top: 85px;">
+                <p>
+                  <strong>Status:</strong>
+                  <%= @rule.status %>
+                </p>
+                 
+                <p>
+                  <strong>Name:</strong>
+                  <%= @rule.name %>
+                </p>
+                <p>
+                  <strong>Evaluation Spec:</strong>
+                  <%= @rule.evaluation_spec %>
+                </p>
+                <p>
+                  <strong>Time Preset:</strong>
+                  <%= @rule.time_preset %>
+                </p>
+                <p>
+                  <strong>Attribution Window:</strong>
+                  <%= @rule.attribution_window %>
+                </p>
+
+                <p>
+                  <strong>Insight:</strong>
+                  <%= @rule.insight %>
+                </p>
+
+
+                <p>
+                  <strong>Schedule Spec:</strong>
+                  <%= @rule.schedule_spec %>
+                </p>
+                 
+                <p>
+                  <strong>Evaluation Type:</strong>
+                  <%= @rule.evaluation_type %>
+                </p>
+                <p>
+                  <strong>Filter Value:</strong>
+                  <%= @rule.filter_value %>
+                </p>
+                 
+                <p>
+                  <strong>Filter Opertaion:</strong>
+                  <%= @rule.filter_operation %>
+                </p>
+                <p>
+                  <strong>Filter Field:</strong>
+                  <%= @rule.filter_field %>
+                </p>
+                 
+                <p>
+                  <strong>Entity Type:</strong>
+                  <%= @rule.entity_type %>
+                </p>
+              </div> 
+              <%=link_to "Back",rules_path%>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- #/ container -->
+</div>
+<!--**********************************
+Content body end
+***********************************-->
+

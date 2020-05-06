@@ -1,0 +1,19 @@
+<div style="margin-top: 100px;">
+  <% if @business_manager.present? %>
+    <div style="margin-top: 100px;margin-left: auto;margin-right: auto;">
+      <p> Business Account ID :- <%= @business_manager.business_account_id %></p>
+      <p> Business Account Name :- <%= @business_manager.business_account_name %></p>
+    </div>
+
+    <div>
+      <% if @ad_account_id.present? %>
+        <h1>Select an Ad Account to start with </h1></br>
+        <p> <%= @ad_account_id %></p>
+      <% else %>
+        <p> No Ad account availiable for this business account</p>
+      <% end %>
+    </div>
+  <% else %>
+    <p>You dont have a business manager account please create it </p>
+  <% end %>
+</div>

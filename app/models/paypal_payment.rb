@@ -1,0 +1,2 @@
+class PaypalPayment < ApplicationRecord
+end

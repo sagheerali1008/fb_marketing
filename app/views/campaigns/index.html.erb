@@ -1,0 +1,231 @@
+
+<!--**********************************
+Content body start
+***********************************-->
+<div class="content-body">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 col-sm-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4">
+                <h4 class="card-title">Listing Campaigns</h4>
+              </div>
+              <div class="col-md-8 text-right">
+                <!-- Trigger/Open The Modal -->
+                <span class="btn mb-1 btn-flat label gradient-1 rounded pointer" data-toggle="modal" data-target="#campaignModal">
+                <i class="fa fa-plus"></i> Create New Campaign
+                </span>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table header-border">
+                <thead>
+                    <tr>
+                      <th>Campaign ID</th>
+                      <th>Campaign Name</th>
+                      <th>Campaign Objective</th>
+                      <th>Special ad category</th>
+                      <th>Status</th>
+                      <th>Buying type</th>
+                      <th>Daily budget</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <% all = @campaignss.all rescue "" %>
+                  <% if all.present? %>
+
+                  <% else %>
+                    <tr>
+                      <td colspan="7">
+                        <div class="alert alert-danger text-center">
+                          <p>"Error: There have been too many calls to this ad-account. Wait a bit and try again"</p>
+                        </div>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 col-sm-12">
+        <div class="card">
+          <div class="card-header" style="border: 1px solid #f1f2f3; background-color: #f8f8f8;padding-left: 18px;padding-right: 40px;">
+            <div class="row">
+              <div class="col-md-3 ">
+                Strategy Status Drilldown
+              </div>
+              <div class="col-md-5 text-left">
+                What is ARR Strategy
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <ul class="nav nav-pills ">
+              <li class="nav-item">
+                <a href="#navpills-1" class="nav-link active show" data-toggle="tab" aria-expanded="false">Aquisition</a>
+              </li>
+              <li class="nav-item">
+                <a href="#navpills-2" class="nav-link" data-toggle="tab" aria-expanded="false">Retargeting</a>
+              </li>
+              <li class="nav-item">
+                <a href="#navpills-3" class="nav-link " data-toggle="tab" aria-expanded="true">Retention</a>
+              </li>
+            </ul>
+
+            <div class="tab-content br-n pn">
+              <div id="navpills-1" class="tab-pane active show">
+                <div class="row align-items-center">
+                  <div class="col-sm-6 col-md-8 col-xl-10">
+                    <div id="chartContainer" style="height: 300px; width: 100%;">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="navpills-2" class="tab-pane">
+                <div class="row align-items-center">
+                  <div class="col-sm-6 col-md-8 col-xl-10">
+                    <h1>DIV 2</h1>
+                  </div>
+                </div>
+              </div>
+              <div id="navpills-3" class="tab-pane ">
+                <div class="row align-items-center">
+                  <div class="col-sm-6 col-md-8 col-xl-10">
+                    <h1>DIV 3</h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--**********************************
+Content body end
+***********************************-->
+
+<div class="container pt-75" style="height: 100%;">
+  <!-- Modal -->
+  <div class="modal fade" id="campaignModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New Campaign</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= render 'campaign_form'%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script type="text/javascript" src="jscript/graph.js"></script> -->
+<script>
+  window.onload = function () {
+
+  var options = {
+    exportEnabled: true,
+    animationEnabled: true,
+    title: {
+      text: "Aquisition"
+    },
+
+    data: [
+      {
+        type: "splineArea",
+        name: "First Quarter",
+        showInLegend: true,
+        dataPoints: [
+          { x: new Date(2020,0,9), y: 18  },
+          { x: new Date(2020,0,10), y: 29 },
+          { x: new Date(2020,0,11), y: 40 },
+          { x: new Date(2020,0,12), y: 34 },
+          { x: new Date(2020,0,13), y: 23 },
+          { x: new Date(2020,0,14), y: 28 },
+          { x: new Date(2020,0,15), y: 28 }
+        ]
+      },
+
+      { //dataSeries - second quarter
+
+        type: "splineArea",
+        name: "Second Quarter",
+        showInLegend: true,
+        dataPoints: [
+          { x: new Date(2020,0,9), y: 14 },
+          { x: new Date(2020,0,10), y: 51 },
+          { x: new Date(2020,0,11), y: 33 },
+          { x: new Date(2020,0,12), y: 44 },
+          { x: new Date(2020,0,13), y: 65 },
+          { x: new Date(2020,0,14), y: 69 },
+          { x: new Date(2020,0,15), y: 25 }
+        ]
+      },
+      { //dataSeries - second quarter
+
+        type: "splineArea",
+        name: "Second Quarter",
+        showInLegend: true,
+        dataPoints: [
+          {x: new Date(2020,0,9), y: 25  },
+          {x: new Date(2020,0,10),  y: 35 },
+          {x: new Date(2020,0,11),  y: 48 },
+          {x: new Date(2020,0,12),  y: 17 },
+          {x: new Date(2020,0,13),  y: 50 },
+          {x: new Date(2020,0,14),  y: 50 },
+          {x: new Date(2020,0,15),  y: 50 }
+        ]
+      },
+      { //dataSeries - second quarter
+
+        type: "splineArea",
+        name: "Second Quarter",
+        showInLegend: true,
+        dataPoints: [
+          {x: new Date(2020,0,9),   y: 45 },
+          {x: new Date(2020,0,10),  y: 27 },
+          {x: new Date(2020,0,11),  y: 65 },
+          {x: new Date(2020,0,12),  y: 41 },
+          {x: new Date(2020,0,13),  y: 57 },
+          {x: new Date(2020,0,14),  y: 57 },
+          {x: new Date(2020,0,15),  y: 57 }
+        ]
+      }
+    ],
+     /** Set axisY properties here*/
+    axisY:{
+      title: "1st Axis Y Title",
+      includeZero: true
+    },
+    axisX:{
+      title: "1st Axis X Title",
+      valueFormatString: "MMM DD",
+      includeZero: false
+    },
+    axisX2:{
+      prefix: "$",
+      suffix: "K",
+      includeZero: true
+    }
+  }
+  $("#chartContainer").CanvasJSChart(options);
+}
+</script>
+
+<style>
+  .nav-item{
+    width: 30%;
+  }
+</style>

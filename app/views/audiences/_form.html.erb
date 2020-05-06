@@ -1,0 +1,136 @@
+<style type="text/css">
+  #audiences_form{
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+</style>
+<%= form_with scope: :audience, local: true, id: 'audiences_form'  do |form| %>
+  <div class="field">
+    <%#= form.label :category_id %>
+    <%= form.select(:category_id, Category.all.collect {|a| [a.name, a.id]}, { prompt: "Choose a Category" }, { class: 'form-control'}) %>  
+  </div>
+  <br>
+
+  <div class="field" id="subcategories_select">
+    <%#= form.label :subcategory_id %>
+    <%= form.collection_select :sub_category_id, SubCategory.all, :id, :name, { prompt: "Choose a subcategory" }, { disabled: true,class: 'form-control' }%>
+  </div>
+  <%#= form.hidden_field :sub_category_id, value: 1 %>
+  <br>
+
+  <div class="form-group">
+    <%#= form.label :name %>
+    <%= form.text_field :name, class: 'form-control', placeholder: 'Audience Name' %>
+  </div>
+
+  <span id="show_description"><a href="javascript:void(0)">Add description</a></span>
+  <div id="audience_description" style="display: none;">  
+    <div class="form-group">
+      <%#= form.label :description %>
+      <%= form.text_field :description, class: 'form-control', placeholder: 'Audience description' %>
+    </div>
+    <span id="hide_description"><a href="javascript:void(0)">Hide description</a></span>
+  </div>
+  <br>
+
+  <div id="social_audience" style="display: none;">
+    <%= form.label :page_id %>
+    <%= form.select :page_id, [["facebook_page","104245237765328"]], {}, { class: 'form-control'} %>
+  </div>
+
+  <div id="normal_audience">
+    <div class="form-group">
+      <%#= form.label :pixel_id %>
+      <%#= form.select :pixel_id, ["#{ENV["PIXEL_ID"]}"], {}, { class: 'form-control'} %>
+      <%= form.select :pixel_id, @pixel, {}, { class: 'form-control'} %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :type, style:"display: none;"%>
+      <%= form.select :audience_type, ["pixel"], {}, { class: 'form-control',style:"display: none;"} %>
+      <%#= form.select :audience_type, ["page"], {}, { class: 'form-control'} %>
+    </div>
+    
+    <%= form.hidden_field :retention_seconds, value: 86400 %>
+    
+    <div class="form-group">
+      <%= form.label :in_the_past %>
+      <%= number_field_tag :retention_days,{}, value: 1, min: 1, max: 180 %>
+      <%= form.label :days %>
+
+    </div>
+
+    <div class="form-group">
+      <%= form.label :field %>
+      <%= form.select :field, ["url", "event", "time_spent", "count"], {}, { class: 'form-control'} %>
+    </div>
+
+    <div class="form-group">
+      <%#= form.label :value %>
+      <%= form.text_field :value, class: 'form-control', placeholder: 'value' %>
+    </div>
+
+    <div class="form-group">
+      <%#= form.label :event %>
+      <%= form.select :event, ['purchase', 'search', 'view_content', 'lead'], {}, { class: 'form-control', style:"display: none;"} %>
+    </div>
+
+    <div class="form-group">
+      <%#= form.label :operator %>
+      <%= form.select :operator, [['is greater than (>) ', 'gt'], ['is greater than or equal to (>=)','gte'], ['equals (=)','eq'],  ["doesn't equals (!=)", 'neq'], [
+      'is less than (<)','lt'], ['is less than or equal to(=<)','lte']], {}, { class: 'form-control', style:"display: none;"} %>
+    </div>
+
+    <div class="form-group">
+      <%#= form.label :time %>
+      <%= form.number_field :time, value: 1, min: 1, style:"display: none;" %>
+    </div>
+
+  </div>
+
+  <div id="looalike_audience" style="display: none;">
+
+    <div class="form-group">
+      <%= form.label :subtype %>
+      <%= form.select :subtype, ["LOOKALIKE"], {}, { class: 'form-control'} %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :origin_audience_id %>
+      <%= form.select(:origin_audience_id, audience_excluding_custom.collect {|a| [a.name, a.customaudience_id,]}, { prompt: "Choose a CustomAudience" }, { class: 'form-control'})%>
+    </div>
+
+    <!-- <div class="form-group"> -->
+      <%#= form.label :type %>
+      <%#= form.select :fb_type, ["custom_ratio"], {}, { class: 'form-control'} %>
+      <%= form.hidden_field :fb_type, value: "custom_ratio" %>
+    <!-- </div> -->
+
+    <div class="form-group">
+      <div id="basic-slider"></div>
+      <span class="example-val" id="slider-padding-value-min1"></span> 
+      <span class="example-val" id="slider-padding-value-max1"></span>
+    </div>
+
+    <div class="form-group">
+      <%#= form.label :starting_ratio %>
+      <%= form.hidden_field :starting_ratio, class: 'form-control', value:'0.00', placeholder: 'Custom Ratio' %>
+    </div>
+
+    <div class="form-group">
+      <%#= form.label :custom_ratio %>
+      <%= form.hidden_field :fb_custom_ratio, class: 'form-control', value:'0.02', placeholder: 'Custom Ratio' %>
+    </div>
+    <br>
+    
+    <div class="form-group">
+      <%= form.label :country %>
+      <%= form.select :country, ["US", "INDIA"], {}, { class: 'form-control'} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "Create Audience", class: 'animated-btn primary-btn custom-btn text-white btn-submit-campaign' %>
+  </div>
+
+<% end %>

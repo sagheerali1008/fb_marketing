@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="/assets/fav.png">
+    <!-- Author Meta -->
+    <meta name="author" content="">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>Brainio | Admin </title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%#= stylesheet_link_tag 'reports.css' %>
+</head>
+    
+<body>
+<!--******************* Preloader start********************-->
+  <div id="preloader">
+      <div class="loader">
+          <svg class="circular" viewBox="25 25 50 50">
+              <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+          </svg>
+      </div>
+  </div>
+<!--*******************Preloader end ********************-->
+<!--******************* Main wrapper start ********************************-->
+  <div id="main-wrapper">
+    <%= render partial: "/layouts/admin_header" %>
+    <%= render partial: "/layouts/admin_sidebar" %>
+    <%= yield %>
+    <%= render partial: "/layouts/admin_footer" %>
+  </div>
+</body>
+</html>
+
+<script type="text/javascript">
+
+console.log("-= -= -= -=- = loaded audience -= -= -= -=- =");
+function step_3_audiences_js(){
+  $(".step_three_back").on('click', function(){
+    $(".step2").show()
+    $(".step3").html('')
+  })
+}
+function campaign_change_js(){
+  $(".campaign_id").on('change', function(){
+    if ($(this).val() != ''){
+      $(".step_two_next").removeClass('disabled')
+    }else{
+      if ($(".into_selected_campaign").is(":checked")){
+        $(".step_two_next").addClass('disabled')
+      }else{
+        $(".step_two_next").removeClass('disabled')
+      }
+    }
+    budget = $(this).find(':selected').attr('data-budget')
+    if (budget != ''){
+      $(".campaign_budget").text(budget)
+      $(".campaign_budget").show()
+      $(".campaign_budget_txt").hide()
+    }else{
+      $(".campaign_budget").text('')
+      $(".campaign_budget").hide()
+      $(".campaign_budget_txt").show()
+    }
+  })
+}
+function step_2_audiences_js(){
+  $(".step_two_next").on('click', function(){
+
+  })
+  $('.open_create_modal').click(function(){
+    $('.AudienceModal__Overlay').addClass('show_modal');
+  });
+
+  $('.AudienceModal__Close').click(function(){
+    $('.AudienceModal__Overlay').removeClass('show_modal');
+  });
+
+  $(".step_two_back").on('click', function(){
+    $(".step1").show()
+    $(".step2").html('')
+  });
+
+  $(".cbo_campaign_on_off").on('click', function(){
+    if ($(this).is(":checked")){
+      close_div = $(this).closest('div.audience_group_row')
+      $(close_div).find('.Campaign__Table__Audience__Name__input').val($(close_div).find('.Campaign__Table__Audience__Name__input').data('name'))
+      $(close_div).find('input.Campaign__Table__Audience__Name__input').addClass('disabled')
+      $(close_div).find('.budget').show();
+      $(close_div).find('.budget_no_cob').hide();
+      $(close_div).find('.campaign_objective').val('conversions')
+      $(close_div).find('.campaign_objective').prop('disabled', 'disabled');
+    }else{
+      close_div = $(this).closest('div.audience_group_row')
+      $(close_div).find('.Campaign__Table__Audience__Name__input').removeClass('disabled')
+      $(close_div).find('.budget').hide();
+      $(close_div).find('.budget_no_cob').show();
+      $(close_div).find('.campaign_objective').prop('disabled', false);
+    }
+  })
+
+  $("button.create_campaign").on('click', function(){
+    campaign_name = $(".CampaignCreation__Body__Name__Input").val()
+    cbo_true = $(".is_cbo_true").is(":checked")
+    cbo_budget = $(".cbo_budget_txt").val()
+    if ((campaign_name != '' && ((cbo_true &&  cbo_budget != '') || !cbo_true))){
+      if (!cbo_true){
+        cbo_budget = ''
+      }
+      $.ajax({
+        url: "/reports/create_campaign",
+        type: "GET",
+        dataType: "script",
+        data: { "campaign_name": campaign_name, "cbo_budget": cbo_budget},
+        error: function() {
+          alert("error");
+        },
+        success: function(data) {
+          $("#campaign_search_and_drop_box").html(data)
+          $(".AudienceModal__Close").trigger('click')
+
+          if ($(".into_selected_campaign").is(":checked")){
+            $(".step_two_next").addClass('disabled')
+          }else{
+            $(".step_two_next").removeClass('disabled')
+          }
+          campaign_change_js()
+        },
+      });
+    }else{
+      alert("Please Fill required field")
+    } 
+  })
+  campaign_change_js()
+  $(".into_brainio").on('click', function(){
+    $(".step_two_next").removeClass('disabled')
+  })
+
+  $(".into_selected_campaign").on('click', function(){
+    if ($(".campaign_id").val() != ''){
+      $(".step_two_next").removeClass('disabled')
+    }else{
+      $(".step_two_next").addClass('disabled')
+    }
+  })
+
+  $(".step_two_next").on('click', function(){
+    $.ajax({
+      url: "/reports/create_ad_step3",
+      type: "GET",
+      dataType: "script",
+      data: {},
+      error: function() {
+        alert("error");
+      },
+      success: function(data) {
+        $(".step1").hide()
+        $(".step2").hide()
+        $(".step3").html(data)
+        step_3_audiences_js()
+      },
+    });
+  })
+}
+function step_1_audiences_js(){
+  $(".step_one_next").on('click', function(){
+    audience_ids = []
+    $(".audience_id_txt").each(function() {
+      audience_ids.push($(this).val());
+    })
+
+    $.ajax({
+      url: "/reports/create_ad_step2",
+      type: "GET",
+      dataType: "script",
+      data: { "audience_ids": audience_ids },
+      error: function() {
+        alert("error");
+      },
+      success: function(data) {
+        $(".step1").hide()
+        $(".step2").html(data);
+        step_2_audiences_js()
+      },
+    });
+  })
+
+  $(".brainio-aud-card").on('click', function(){
+    $(this).toggleClass("selected_card");
+    input = $(this).find('.audience_id_txt')
+    if ($(this).hasClass('selected_card')){
+      $(input).val(input.data('audience-id'))
+    }else{
+      $(input).val(null)
+    }
+
+    $(".brainio-aud-card").each(function() {
+      $(".step_one_next").addClass('disabled')
+      if ($(this).hasClass("selected_card")){
+        $(".step_one_next").removeClass('disabled')
+        return false;
+      }
+    });
+
+    count = 0
+    $(".brainio-aud-card").each(function() {
+      if ($(this).hasClass("selected_card")){
+        count = count +1
+      }
+    });
+    $(".audience_count").text(count)
+  })
+
+  $(".select_all_audience").on('click', function(){
+    if ($(this).hasClass('clicked')){
+      $(this).text('Select all in this view')
+      $(this).closest("div.category_block").find('.brainio-aud-card').removeClass("selected_card");
+    }else{
+      $(this).text('Unselect all in this view')
+      $(this).closest("div.category_block").find('.brainio-aud-card').addClass("selected_card");
+    }
+    $(this).toggleClass('clicked')
+
+    count = 0
+    $(".brainio-aud-card").each(function() {
+      if ($(this).hasClass("selected_card")){
+        count = count +1
+      }
+    });
+    if (count > 0){
+      $(".step_one_next").removeClass('disabled')
+    }else{
+      $(".step_one_next").addClass('disabled')
+    }
+    $(".audience_count").text(count)
+  })
+}
+$( document ).ready(function() {
+  step_1_audiences_js()
+  $("#show_description").click(function(){
+    $("#audience_description").show();
+    $("#show_description").hide();
+  })
+  $("#hide_description").click(function(){
+    $("#audience_description").hide();
+    $("#show_description").show();
+
+  })
+
+
+  $("#audience_retention_seconds").change(function(){
+    seconds  = $(this).val();
+    console.log(seconds);
+    days = Math.round(parseInt(seconds)/86400);
+    $("#retention_days").val(days);
+  });
+
+  $("#retention_days").change(function(){
+    days  = $(this).val();
+    console.log(days);
+    seconds = parseInt(days)*86400;
+    $("#audience_retention_seconds").val(seconds);
+  });
+
+  $("#audience_category_id").change(function(){
+   selected_text = $("#audience_category_id option:selected").text();
+    var category_id = $(this).val();
+    $.ajax({
+      url: "/categories/" + category_id + "/get_sub_categories",
+      type: "GET",
+      dataType: "script",
+      data: { "category_id": category_id }
+    });
+   if (selected_text == "Prospecting Lookalike"){
+    $("#looalike_audience").show();
+    $("#normal_audience").hide();
+  }
+  else{
+    $("#looalike_audience").hide();
+    $("#normal_audience").show();
+  }
+ });
+
+  $("#audience_sub_category_id").change(function(){
+   selected_text = $("#audience_sub_category_id option:selected").text();
+    var subcategory_id = $(this).val();
+    if (selected_text == "Social Media Engagors"){
+      $("#social_audience").show();
+    }
+    else{
+      $("#social_audience").hide();
+      // $("#normal_audience").show();
+      // $("#looalike_audience").hide();
+    }
+  });
+
+});
+</script>
+
+<script type="text/javascript">
+
+  $(function() {
+    $(".child").on("click",function() {
+      $parent = $(this).prevAll(".parent");
+      if ($(this).is(":checked")) $parent.prop("checked",true);
+      else {
+        var len = $(this).parent().find(".child:checked").length;
+        $parent.prop("checked",len>0);
+      }    
+    });
+
+    $(".parent").on("click",function() {
+      $(this).parent().find(".child").prop("checked",this.checked);
+    });
+
+    $("#checkAll").change(function () {
+      $("input:checkbox").prop('checked', $(this).prop("checked"));
+
+    });
+
+    $(".child,.parent,#checkAll").change(function () {
+      show_audiences();
+    });
+
+
+    $("#audience_field").change(function () {
+      // show_audiences();
+      selected_text = $("#audience_field option:selected").text();
+      if(selected_text == "url")
+      {
+        $("#audience_value").show();
+        $("#audience_operator").hide();
+        $("#audience_time").hide();
+        $("#audience_event").hide();
+      }else if(selected_text == "time_spent" || selected_text == "count" ){
+        $("#audience_operator").show();
+        $("#audience_time").show();
+        $("#audience_event").hide();
+        $("#audience_value").hide();
+      }
+      else{
+        $("#audience_event").show();
+        $("#audience_value").hide();
+        $("#audience_operator").hide();
+        $("#audience_time").hide();
+      }
+    });
+
+
+    function show_audiences()
+    {
+      $(".step_one_next").addClass('disabled')
+      $(".audience_count").text(0)
+      $(".brainio-aud-card").removeClass("selected_card");
+      $(".select_all_audience").removeClass('clicked')
+      $(".select_all_audience").text('Select all in this view')
+      $('.audience_id_txt').val(null)
+      subcategory_ids = []
+      $("input[class=child]:checked").each( function () {
+         console.log( $(this).val() );
+         subcategory_ids.push($(this).val());
+      });
+      console.log("=-=-=-==-=-=-=-=-"+subcategory_ids+"=-=-=-=-=-=-=-");
+      $.ajax({
+        url: "/reports/get_audiences",
+        type: "GET",
+        dataType: "script",
+        data: { "subcategory_ids": subcategory_ids },
+        error: function() {
+          alert("error");
+        },
+        success: function(data) {
+          $("#update_audience_list").html(data);
+          step_1_audiences_js()
+        },
+      });
+
+    } //function show_audiences end
+  }); //function ready end
+
+</script>
+
+
+<script type="text/javascript">
+  $('.SimpleDropdown__Header').on('click', function() {
+    $('.SimpleDropdown__Body').show();
+  });
+
+
+</script>

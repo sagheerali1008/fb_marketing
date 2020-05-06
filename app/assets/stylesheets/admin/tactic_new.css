@@ -1,0 +1,282 @@
+#Automation button.Edit {
+  justify-content: center;
+  border-radius: 4px;
+  outline: none;
+  display: inline-flex;
+  vertical-align: top;
+  cursor: pointer;
+  line-height: 25px;
+  border: none;
+  color: #0a4673;
+  font-family: proxima-nova,sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  width: 66px;
+  height: 26px;
+  background-color: #f6f6f8;
+  cursor: pointer;
+  line-height: 25px;
+  color: #0a4673;
+  font-family: proxima-nova,sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  }
+#Automation .TriggerSettingsContainer {
+  background-color: #fefefe;
+  border: 1px solid #f5f6f8;
+  box-shadow: 0 3px 6px rgba(0,0,0,.16);
+  margin-top: 20px;
+  }
+#Automation #SelectEventStep .RecentEventCardGrid>.RecentEventCardRightPart>p {
+  padding-left: 15px;
+  align-self: center;
+  }
+#Automation #SelectEventStep .RecentEventCardGrid .RecentEventCardRightPart {
+  background-color: #fff;
+  color: #4c27a8;
+  font-family: proxima-nova;
+  font-size: 22px;
+  font-weight: 700;
+  display: grid;
+  }
+#Automation #SelectEventStep .RecentEventsButtonsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr auto;
+  margin-top: 20px;
+  grid-gap: 21px;
+  }
+#Automation #SelectEventStep .RecentEventCardGrid {
+  display: grid;
+  grid-template-columns: 120px auto;
+  grid-template-rows: 120px;
+  background-color: #f2f2f2;
+  transition: background .2s;
+  }
+#Automation #SelectEventStep .RecentEventCardGrid .RecentEventCardLeftPart{
+  justify-self: center;
+  align-self: center;
+  }
+#Automation #SelectEventStep .RecentEventsDescriptionCardGrid .RecentEventsDescriptionCardRightPart {
+  justify-self: center;
+  align-self: center;
+  }
+strong {
+  font-weight: bolder;
+}
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+#Automation #SelectEventStep .RecentEventsDescriptionCardGrid {
+  color: #0d182f;
+  font-family: proxima-nova;
+}
+h1 {
+  display: block;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+#Automation #SelectEventStep .RecentEventsDescriptionCardGrid .RecentEventsDescriptionCardTitleText {
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+  font-weight: 500;
+}
+#Automation #SelectEventStep .RecentEventsDescriptionCardGrid {
+  box-shadow: 0 3px 6px rgba(0,0,0,.16);
+  background-color: #fcfcfc;
+  color: #0d182f;
+  font-family: proxima-nova;
+  padding: 20px;
+  grid-template-columns: 1fr 1fr;
+}
+#Automation #SelectEventStep {
+  margin-top: 20px;
+}
+button.NextButton.NextButton, #Automation button.PrevButton.NextButton {
+  color: #fff;
+  box-shadow: 0 3px 6px rgba(0,0,0,.16);
+  background: #5586ef;
+}
+#Automation {
+  /*width: calc(95% - 180px);
+  max-width: 1506px;
+  margin-left: auto;
+  margin-top: 20px;
+  margin-right: auto;*/
+  box-sizing: border-box;
+}
+#Automation button.NextButton, #Automation button.PrevButton {
+  display: flex;
+  height: 26px;
+  line-height: normal;
+  align-items: center;
+  font-family: proxima-nova;
+  justify-items: center;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 12px;
+  font-weight: 500;
+  text-align: center;
+  padding: 0 10px;
+  border: none;
+}
+#TacticWizardStepper .StepperContainer .Content {
+  margin-left: auto;
+  margin-right: auto;
+  align-content: center;
+  color: #0d182f;
+  font-size: 24px;
+  font-weight: 300;
+}
+#TacticWizardStepper .StepperContainer .MadgicxButton{
+  height: fit-content;
+}
+.MadgicxButton.back, .MadgicxButton1.back1, .MadgicxButton.next, .MadgicxButton1.next1 {
+  background-color: #f8f8f8;
+  color: #a0aabe;
+  font-size: 12px;
+  font-weight: 500;
+  box-shadow: none;
+  padding: 7px 15px;
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+.MadgicxButton {
+  position: relative;
+  padding: 5px 25px;
+  border: none;
+  min-height: 24px;
+  outline: none;
+}
+.MadgicxButton.back .Wrapper .NavArrow {
+  margin-right: 10px;
+}
+.MadgicxButton.back .Wrapper, .MadgicxButton.next .Wrapper,
+.MadgicxButton1.back1 .Wrapper, .MadgicxButton1.next1 .Wrapper  {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+.MadgicxButton .Wrapper {
+  width: 100%;
+  height: 100%;
+  white-space: nowrap;
+}
+#TacticWizardStepper {
+  vertical-align: top;
+  /*padding: 10px 20px;*/
+  text-align: center;
+  /*margin-bottom: 20px;*/
+}
+#TacticWizardStepper .StepperContainer {
+  display: flex;
+  min-height: 37px;
+  line-height: 37px;
+}
+#TacticWizardStepper .StepperContainer #Stepper {
+  width: 700px;
+  position: relative;
+  justify-content: space-between;
+  display: flex;
+}
+#TacticWizardStepper .StepperContainer #Stepper .LinesContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 3px;
+  top: 14px;
+  z-index: 1;
+  width: 100%;
+  background-color: #fff;
+  position: absolute;
+}
+#TacticWizardStepper .StepperContainer #Stepper .Button.Selected {
+  cursor: default;
+  border: 2px solid #5586ef;
+}
+#TacticWizardStepper .StepperContainer #Stepper .Button {
+  padding: 0;
+  position: relative;
+  border: none;
+  outline: none;
+  z-index: 3;
+  height: 31px;
+  width: 31px;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0,0,0,.16);
+  background-color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  color: #000;
+  line-height: normal;
+  cursor: pointer;
+}
+button {
+  overflow: visible;
+  text-transform: none;
+}
+button.NextButton1.NextButton1, #Automation button.PrevButton.NextButton1 {
+  color: #fff;
+  box-shadow: 0 3px 6px rgba(0,0,0,.16);
+  background: #5586ef;
+}
+#Automation button.NextButton1, #Automation button.PrevButton {
+  display: flex;
+  height: 26px;
+  line-height: normal;
+  align-items: center;
+  font-family: proxima-nova;
+  justify-items: center;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 12px;
+  font-weight: 500;
+  text-align: center;
+  padding: 0 10px;
+  border: none;
+}
+#TacticWizardStepper .StepperContainer .MadgicxButton1{
+  height: fit-content;
+}
+.MadgicxButton1.back1 {
+  background-color: #f8f8f8;
+  color: #a0aabe;
+  font-size: 12px;
+  font-weight: 500;
+  box-shadow: none;
+  padding: 7px 15px;
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+.MadgicxButton1 {
+  position: relative;
+  padding: 5px 25px;
+  border: none;
+  min-height: 24px;
+  outline: none;
+}
+.MadgicxButton1.back1 .Wrapper .NavArrow {
+  margin-right: 10px;
+}
+.MadgicxButton1.back1 .Wrapper {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+.MadgicxButton1 .Wrapper {
+  width: 100%;
+  height: 100%;
+  white-space: nowrap;
+}
+.MadgicxButton.back:hover, .MadgicxButton1.back1:hover{
+  color: #76838f !important;
+  background: #ededed;
+}
